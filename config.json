@@ -1,0 +1,15 @@
+{
+    "mqtt": {
+        "host": "mqtt.eclipseprojects.io",
+        "port": 1883,
+        "user": "",
+        "password": "",
+        "topic": "test/sensors/temperature"
+    },
+    "server": {
+        "port": 4000
+    },
+    "db": {
+        "path": "./data/sensor_data.db"
+    }
+}
