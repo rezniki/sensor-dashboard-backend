@@ -1,6 +1,6 @@
 {
     "mqtt": {
-        "host": "mqtt.eclipseprojects.io",
+        "host": "broker.hivemq.com",
         "port": 1883,
         "user": "",
         "password": "",
