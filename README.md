@@ -11,7 +11,7 @@ Backend-сервер для сбора и трансляции данных с �
 Этот сервер принимает данные от MQTT-брокера (или публикует их сам),  
 сохраняет их в SQLite базу и рассылает подключённым клиентам через Socket.IO.
 
-Используется в связке с фронтендом — [Sensor Dashboard Frontend](../sensor-dashboard-frontend/README.md).
+Используется в связке с фронтендом — [Sensor Dashboard Frontend](https://github.com/rezniki/sensor-dashboard-frontend).
 
 ---
 
@@ -43,7 +43,7 @@ Backend-сервер для сбора и трансляции данных с �
 
 ### 1 Клонирование и переход в папку
 ```bash
-git clone <repo-url>
+git clone <https://github.com/rezniki/sensor-dashboard-frontend>
 cd sensor-dashboard-backend
 ```
 
@@ -61,4 +61,3 @@ npm run dev
 ```bash
 http://localhost:4000
 ```
-
