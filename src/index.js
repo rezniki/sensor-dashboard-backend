@@ -81,3 +81,38 @@ server.listen(PORT, () => {
     logger.info(`Socket.IO ready - clients can connect to ws://<host>:${PORT}`);
     logger.info(`REST endpoint GET /api/readings`);
 });
+
+// ---- Автоматическая публикация 10 тестовых значений при старте ----
+const mqtt = require('mqtt');
+function publishTestValues() {
+    const cfg = config.mqtt;
+    const url = `mqtt://${cfg.host}:${cfg.port}`;
+    const options = {};
+    if (cfg.user) options.username = cfg.user;
+    if (cfg.password) options.password = cfg.password;
+
+    const publisher = mqtt.connect(url, options);
+    publisher.on('connect', () => {
+        logger.info('Auto-publisher connected. Sending 10 test values...');
+        for (let i = 0; i < 10; i++) {
+        const value = (36 + Math.random() * 2).toFixed(1);
+        setTimeout(() => {
+            publisher.publish(cfg.topic, value, { qos: 0 });
+            logger.info(`Auto-published: ${value}`);
+            if (i === 9) {
+            setTimeout(() => {
+                publisher.end();
+                logger.info('Auto-publisher finished.');
+            }, 500);
+            }
+        }, i * 300);
+        }
+    });
+
+    publisher.on('error', (err) => {
+        logger.error('Auto-publisher error:', err);
+    });
+}
+
+// Запускаем генерацию данных через 5 секунд после старта сервера
+setTimeout(publishTestValues, 5000);
