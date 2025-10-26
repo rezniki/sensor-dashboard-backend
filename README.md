@@ -43,7 +43,7 @@ Backend-сервер для сбора и трансляции данных с �
 
 ### 1 Клонирование и переход в папку
 ```bash
-git clone <https://github.com/rezniki/sensor-dashboard-frontend>
+git clone <git@github.com:rezniki/sensor-dashboard-backend.git>
 cd sensor-dashboard-backend
 ```
 
